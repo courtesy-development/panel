@@ -1,0 +1,74 @@
+:root
+{
+  --primary-color: #202126;
+  --secondary-color: #607D8B;
+  --shadow-color: rgba(96, 125, 139,0.6);
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: var(--primary-color);
+  color: black;
+}
+
+form {
+  box-shadow: 0 16px 31px -17px var(--shadow-color);
+  border-radius: 10px;
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -49%);
+  color: #ababab;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  height: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: var(--secondary-color);
+  box-shadow: 0 16px 31px -17px var(--shadow-color);
+  color: var(--primary-color);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+button.dark-theme
+{
+  background-color: #4b36af;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+}
+
