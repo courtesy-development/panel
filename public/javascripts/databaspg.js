@@ -10,7 +10,7 @@ const client = mysql.createPool({
 module.exports = {
     register_new_user: (username, email, hashed_password, time, ip_address) => {
         return new Promise((resolve, reject) => {
-            client.query("INSERT INTO new_users (username, user_email, password_hash, registered_on, registration_ip) VALUES (?, ?, ?, ?, ?)", [username, email, hashed_password, time, ip_address], (error, elements) => {
+            client.query("INSERT INTO users (username, user_email, password_hash, registered_on, registration_ip) VALUES (?, ?, ?, ?, ?)", [username, email, hashed_password, time, ip_address], (error, elements) => {
                 if (error) {
                     return reject(error);
                 }
@@ -20,7 +20,7 @@ module.exports = {
     },
     get_user_data_username: (username) => {
         return new Promise((resolve, reject) => {
-            client.query("SELECT * FROM new_users WHERE username = ?", [username], (error, elements) => {
+            client.query("SELECT * FROM users WHERE username = ?", [username], (error, elements) => {
                 if (error) {
                     return reject(error);
                 }
@@ -30,7 +30,7 @@ module.exports = {
     },
     update_login_information: (username, ip, time) => {
         return new Promise((resolve, reject) => {
-            client.query("UPDATE new_users SET last_login = ?, last_ip = ? WHERE username = ?", [time, ip, username], (error) => {
+            client.query("UPDATE users SET last_login = ?, last_ip = ? WHERE username = ?", [time, ip, username], (error) => {
                 if (error) {
                     return reject(error);
                 }
@@ -40,7 +40,7 @@ module.exports = {
     },
     is_username_taken: (username) => {
         return new Promise((resolve, reject) => {
-            client.query("SELECT username FROM new_users WHERE username = ?", [username], (error, elements) => {
+            client.query("SELECT username FROM users WHERE username = ?", [username], (error, elements) => {
                 if (error) {
                     return reject(error);
                 }
@@ -50,7 +50,7 @@ module.exports = {
     },
     is_email_taken: (email) => {
         return new Promise((resolve, reject) => {
-            client.query("SELECT user_email FROM new_users WHERE user_email = ?", [email], (error, elements) => {
+            client.query("SELECT user_email FROM users WHERE user_email = ?", [email], (error, elements) => {
                 if (error) {
                     return reject(error);
                 }
