@@ -28,10 +28,10 @@ app.use(register);
 app.use(login);
 app.use(home);
 
-// Redirect instead of rendering new page?
+// Render new page on landing page?
 const index = require('./sources/index');
 app.use(index);
-/* Redirect?
+/* Redirect on landing page?
 app.get('/', (req, res) => {
     return res.redirect('/login');
 });
