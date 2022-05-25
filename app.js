@@ -3,10 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bcrypt = require('bcrypt');
-const index = require('./sources/login.js');
-const client = require('./public/javascripts/databaspg');
-const misc = require('./public/javascripts/misc');
 var app = express();
 
 // view engine setup
@@ -27,9 +23,19 @@ const register = require('./sources/register');
 const login = require('./sources/login');
 const home = require('./sources/home');
 
+
 app.use(register);
 app.use(login);
 app.use(home);
+
+// Render new page on landing page?
+const index = require('./sources/index');
+app.use(index);
+/* Redirect on landing page?
+app.get('/', (req, res) => {
+    return res.redirect('/login');
+});
+*/
 
 
 // catch 404 and forward to error handler
